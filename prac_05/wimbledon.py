@@ -1,7 +1,7 @@
 """
 wimbledon
-Estimate: 15 minutes
-Actual:
+Estimate: 25 minutes
+Actual: 32 minutes
 """
 FILE_NAME = "wimbledon.csv"
 
