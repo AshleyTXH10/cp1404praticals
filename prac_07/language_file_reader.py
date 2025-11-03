@@ -28,7 +28,9 @@ def main():
         reflection = parts[2] == "Yes"
         # Construct a ProgrammingLanguage object using the elements
         # year should be an int
-        language = ProgrammingLanguage(parts[0], parts[1], reflection, int(parts[3]))
+        # pointer arithemetic is stored as a string (Yes/No) and we want a Boolean
+        pointer_arithemetic = parts[-1] == "Yes"
+        language = ProgrammingLanguage(parts[0], parts[1], reflection, int(parts[3]), pointer_arithemetic)
         # Add the language we've just constructed to the list
         languages.append(language)
     # Close the file as soon as we've finished reading it

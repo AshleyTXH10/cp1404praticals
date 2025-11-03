@@ -1,7 +1,7 @@
-Language,Typing,Reflection,Year,False
-Java,Static,Yes,1995,False
-C++,Static,No,1983,True
-Python,Dynamic,Yes,1991,False
-Visual Basic,Static,No,1991,False
-Ruby,Dynamic,Yes,1995,False
-Javascript,Dynamic,Yes,1995,False
+Language,Typing,Reflection,Year,Pointer arithemetic
+Java,Static,Yes,1995,No
+C++,Static,No,1983,Yes
+Python,Dynamic,Yes,1991,No
+Visual Basic,Static,No,1991,No
+Ruby,Dynamic,Yes,1995,No
+Javascript,Dynamic,Yes,1995,No
