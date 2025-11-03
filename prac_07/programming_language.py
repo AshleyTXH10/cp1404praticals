@@ -15,6 +15,10 @@ class ProgrammingLanguage:
         self.year = year
         self.pointer_arithemetic = pointer_arithmetic
 
+    def __str__(self):
+        """Return string representation of a ProgrammingLanguage for printing purposes."""
+        return f"{self.name}, {self.typing} Typing, Reflection={self.reflection}, First appeared in {self.year}, Pointer arithemetic={self.pointer_arithemetic}"
+
     def __repr__(self):
         """Return string representation of a ProgrammingLanguage."""
         return f"{self.name}, {self.typing} Typing, Reflection={self.reflection}, First appeared in {self.year}, Pointer arithemetic={self.pointer_arithemetic}"
