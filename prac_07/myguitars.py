@@ -3,14 +3,17 @@ from prac_07.guitar import Guitar
 FILENAME = "guitars.csv"
 def main():
     guitars = load_guitars(FILENAME)
+    guitars.sort()
+
     for i, guitar in enumerate(guitars):
-        print(f"Guitar {i}: {guitar}")
+        print(f"Guitar {i+1}: {guitar}")
 
 def load_guitars(filename):
     with open(filename, 'r') as in_file:
         guitars = []
         for line in in_file:
-            guitar = Guitar(line.strip().split(","))
+            part = line.strip().split(",")
+            guitar = Guitar(part[0], int(part[1]), float(part[-1]))
             guitars.append(guitar)
     return guitars
 
