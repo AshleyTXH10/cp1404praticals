@@ -5,8 +5,8 @@ Actual:
 """
 
 class ProgrammingLanguage():
-    def __init__(self, programming_language="", typing="", reflection=False, year=""):
-        self.programming_language = programming_language
+    def __init__(self, name="", typing="", reflection=False, year=""):
+        self.name = name
         self.typing = typing
         self.reflection = reflection
         self.year = year
