@@ -3,13 +3,34 @@ Project Management Program
 estimate: 50 minutes
 actual:
 """
+from project import Project
+FILENAME = "projects.txt"
+MENU = ("- (L)oad Projects\n"
+        "- (S)ave Projects\n"
+        "- (D)isplay Projects\n"
+        "- (F)ilter projects by date\n"
+        "- (A)dd new project\n"
+        "- (U)pdate project\n"
+        "- (Q)uit")
+MENU_CHOICES = "lSDFAUQ"
 def main():
     """Runs the project management program"""
-    print("Main program")
+    print("Welcome to Pythonic Project Management")
+    projects = load_projects()
+    print(f"Loaded {len(projects)} from {FILENAME}")
+    print(MENU)
+    choice = input(">>> ").upper()
 
 def load_projects():
     """Prompt the user for a filename to load projects from and load them)"""
-    print("Load projects")
+    projects = []
+    with open(FILENAME, 'r') as in_file:
+        lines = in_file.readlines()
+        for line in lines[1:]:
+            project_data = [line.strip().split(",")]
+            #name, start_date, priority, cost_estimate, completion_percentage = project_data
+            projects.append(Project(project_data))
+    return projects
 
 def save_projects():
     """Prompt the user for a filename to save projects to and save them"""
