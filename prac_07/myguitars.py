@@ -1,4 +1,4 @@
-from prac_07.guitar import Guitar
+from guitar import Guitar
 
 FILENAME = "guitars.csv"
 def main():
