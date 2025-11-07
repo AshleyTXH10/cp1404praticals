@@ -3,6 +3,10 @@ Project Management Program
 estimate: 50 minutes
 actual:
 """
+from datetime import datetime
+
+from docutils.parsers.rst.directives import percentage
+
 from project import Project
 FILENAME = "projects.txt"
 MENU = ("- (L)oad Projects\n"
@@ -28,11 +32,17 @@ def main():
             projects = load_projects(filename)
             print(f"Loaded {len(projects)} from {filename}")
 
+            print(MENU)
+            choice = input(">>> ").upper()
+
         elif choice == "S":
             print("Save projects")
 
         elif choice == "D":
-            print("Display projects")
+            display_projects(projects)
+
+            print(MENU)
+            choice = input(">>> ").upper()
 
         elif choice == "F":
             print("Filter projects by date")
@@ -51,18 +61,32 @@ def load_projects(filename):
     with open(filename, 'r') as in_file:
         lines = in_file.readlines()
         for line in lines[1:]:
-            project_data = [line.strip().split(",")]
-            #name, start_date, priority, cost_estimate, completion_percentage = project_data
-            projects.append(Project(project_data))
+            project_data = line.strip().split("\t")
+            name, start_date_str, priority, cost_estimate, completion_percentage = project_data
+            start_date = datetime.strptime(start_date_str, "%d/%m/%Y").date()
+            projects.append(Project(name, start_date, int(priority), float(cost_estimate), int(completion_percentage)))
     return projects
 
 def save_projects():
     """Prompt the user for a filename to save projects to and save them"""
     print("Save projects")
 
-def display_projects():
+def filter_completed_projects(projects):
+    incomplete_projects = [project for project in projects if project.completion_percentage <100]
+    completed_projects = [project for project in projects if project.completion_percentage == 100]
+    return incomplete_projects, completed_projects
+
+
+def display_projects(projects):
     """Display two groups: incomplete projects; completed projects, both sorted by priority"""
-    print("Display")
+    incomplete_projects, completed_projects = filter_completed_projects(projects)
+    print("Incomplete projects:")
+    for project in incomplete_projects:
+        print(project)
+    print("Completed projects")
+    for project in completed_projects:
+        print(project)
+
 
 def filter_projects():
     """Ask the user for a date and display only projects that start after that date, sorted by date"""
