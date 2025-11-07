@@ -48,7 +48,9 @@ def main():
             print("Filter projects by date")
 
         elif choice == "A":
-            print("Add new project")
+            add_new_project(projects)
+            print(MENU)
+            choice = input(">>> ").upper()
 
         elif choice == "U":
             print("Update projects")
@@ -103,9 +105,15 @@ def filter_projects():
     """Ask the user for a date and display only projects that start after that date, sorted by date"""
     print("Filter projects by date")
 
-def add_new_project():
+def add_new_project(projects):
     """Ask the user for the inputs and add a new project to memory"""
-    print("add")
+    name = input("Name: ")
+    start_date_str = input("Start date (dd/mm/yy): ")
+    start_date = datetime.strptime(start_date_str, "%d/%m/%Y").date()
+    priority = input("priority: ")
+    cost_estimate = float(input("Cost estimate: $"))
+    completion_percentage = int(input("Percent complete: %"))
+    projects.append(Project(name, start_date, priority, cost_estimate, completion_percentage))
 
 def update_project(projects, project_choice, new_percentage, new_priority):
     """Choose a project, then modify the completion % and/or priority - the user can leave either input blank to retain existing values"""
