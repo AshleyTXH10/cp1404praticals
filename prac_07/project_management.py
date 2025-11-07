@@ -13,18 +13,42 @@ MENU = ("- (L)oad Projects\n"
         "- (U)pdate project\n"
         "- (Q)uit")
 MENU_CHOICES = "lSDFAUQ"
+QUIT_OPTION = "Q"
 def main():
     """Runs the project management program"""
     print("Welcome to Pythonic Project Management")
-    projects = load_projects()
+    projects = load_projects(FILENAME)
     print(f"Loaded {len(projects)} from {FILENAME}")
     print(MENU)
     choice = input(">>> ").upper()
 
-def load_projects():
+    while choice != QUIT_OPTION:
+        if choice == "L":
+            filename = input("Enter filename: ")
+            projects = load_projects(filename)
+            print(f"Loaded {len(projects)} from {filename}")
+
+        elif choice == "S":
+            print("Save projects")
+
+        elif choice == "D":
+            print("Display projects")
+
+        elif choice == "F":
+            print("Filter projects by date")
+
+        elif choice == "A":
+            print("Add new project")
+
+        elif choice == "U":
+            print("Update projects")
+
+
+
+def load_projects(filename):
     """Prompt the user for a filename to load projects from and load them)"""
     projects = []
-    with open(FILENAME, 'r') as in_file:
+    with open(filename, 'r') as in_file:
         lines = in_file.readlines()
         for line in lines[1:]:
             project_data = [line.strip().split(",")]
