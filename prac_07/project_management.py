@@ -4,9 +4,6 @@ estimate: 50 minutes
 actual:
 """
 from datetime import datetime
-
-from docutils.parsers.rst.directives import percentage
-
 from project import Project
 FILENAME = "projects.txt"
 MENU = ("- (L)oad Projects\n"
@@ -18,6 +15,7 @@ MENU = ("- (L)oad Projects\n"
         "- (Q)uit")
 MENU_CHOICES = "lSDFAUQ"
 QUIT_OPTION = "Q"
+COMPLETED_PERCENTAGE = 100
 def main():
     """Runs the project management program"""
     print("Welcome to Pythonic Project Management")
@@ -46,9 +44,16 @@ def main():
 
         elif choice == "F":
             print("Filter projects by date")
+            filtered_projects = filter_projects_date(projects)
+            for project in filtered_projects:
+                print(project)
+
+            print(MENU)
+            choice = input(">>> ").upper()
 
         elif choice == "A":
             add_new_project(projects)
+
             print(MENU)
             choice = input(">>> ").upper()
 
@@ -85,8 +90,8 @@ def save_projects():
     print("Save projects")
 
 def filter_completed_projects(projects):
-    incomplete_projects = [project for project in projects if project.completion_percentage <100]
-    completed_projects = [project for project in projects if project.completion_percentage == 100]
+    incomplete_projects = [project for project in projects if project.completion_percentage < COMPLETED_PERCENTAGE]
+    completed_projects = [project for project in projects if project.completion_percentage == COMPLETED_PERCENTAGE]
     return incomplete_projects, completed_projects
 
 
@@ -101,9 +106,13 @@ def display_projects(projects):
         print(project)
 
 
-def filter_projects():
+def filter_projects_date(projects):
     """Ask the user for a date and display only projects that start after that date, sorted by date"""
-    print("Filter projects by date")
+    date_str = input("Show projects that start after date (dd/mm/yy): ")
+    date = datetime.strptime(date_str, "%d/%m/%Y").date()
+    filtered_projects = [project for project in projects if project.start_date < date]
+    return filtered_projects
+
 
 def add_new_project(projects):
     """Ask the user for the inputs and add a new project to memory"""
