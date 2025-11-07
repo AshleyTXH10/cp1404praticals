@@ -52,6 +52,17 @@ def main():
 
         elif choice == "U":
             print("Update projects")
+            for i, project in enumerate(projects):
+                print(f"{i} {project}")
+            project_choice = int(input("Project choice: "))
+            print(projects[project_choice])
+            new_percentage = int(input("New percentage: "))
+            new_priority = input("New priority: ")
+            update_project(projects, project_choice, new_percentage, new_priority)
+
+            print(MENU)
+            choice = input(">>> ").upper()
+
 
 
 
@@ -96,8 +107,12 @@ def add_new_project():
     """Ask the user for the inputs and add a new project to memory"""
     print("add")
 
-def update_project():
+def update_project(projects, project_choice, new_percentage, new_priority):
     """Choose a project, then modify the completion % and/or priority - the user can leave either input blank to retain existing values"""
+    project = projects[project_choice]
+    project.completion_percentage = new_percentage
+    if new_priority != "":
+        project.priority = new_priority
     print("Update")
 
 main()
