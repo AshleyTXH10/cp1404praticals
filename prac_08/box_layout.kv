@@ -6,7 +6,9 @@ BoxLayout:
     Button:
         text: 'two'
     Button:
+        id: output_label
         text: 'Greet'
+        on_press: app.handle_greet()
     Label:
         color: (1, 1, 0, 1)
         text: 'Enter your name'
