@@ -2,6 +2,9 @@ from kivy.app import App
 from kivy.lang import Builder
 from kivy.properties import StringProperty
 
+MILES_TO_KM = 1.60934
+MILE_VALUE = 1
+
 class MilesToKmApp(App):
     km_text = StringProperty("0 km")
     def build(self):
@@ -14,17 +17,15 @@ class MilesToKmApp(App):
 
     def convert_miles_to_km(self):
         miles = self.get_miles()
-        km = miles * 1.60934
+        km = miles * MILES_TO_KM
         self.km_text = f"{km:.2f} km"
 
     def increase_miles(self):
-        miles = self.get_miles() + 1
-        self.root.ids.input_miles.text = str(miles)
-        self.convert_miles_to_km()
+        miles = self.get_miles() + MILE_VALUE
+        self.root.ids.miles_input.text = str(miles)
 
     def decrease_miles(self):
-        miles = self.get_miles() - 1
-        self.root.ids.input_miles.text = str(miles)
-        self.convert_miles_to_km()
+        miles = self.get_miles() - MILE_VALUE
+        self.root.ids.miles_input.text = str(miles)
 
 MilesToKmApp().run()
