@@ -13,7 +13,10 @@ class MilesToKmApp(App):
         return self.root
 
     def get_miles(self):
-        return int(self.root.ids.input_miles.text)
+        try:
+            return int(self.root.ids.input_miles.text)
+        except ValueError:
+            return 0.0
 
     def convert_miles_to_km(self):
         miles = self.get_miles()
@@ -23,9 +26,11 @@ class MilesToKmApp(App):
     def increase_miles(self):
         miles = self.get_miles() + MILE_VALUE
         self.root.ids.miles_input.text = str(miles)
+        self.convert_miles_to_km()
 
     def decrease_miles(self):
         miles = self.get_miles() - MILE_VALUE
         self.root.ids.miles_input.text = str(miles)
+        self.convert_miles_to_km()
 
 MilesToKmApp().run()
