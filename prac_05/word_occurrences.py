@@ -14,7 +14,7 @@ for word in words:
     else:
         word_count[word] = 1
 
-word_width = max((len(word) for word in word_count))
+word_width = max(len(word) for word in word_count)
 
 # Print word and the count in a formatted way
 for word, count in word_count.items():
