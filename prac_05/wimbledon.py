@@ -7,14 +7,20 @@ FILE_NAME = "wimbledon.csv"
 
 def main():
     """Read wimbledon data, print wimbledon champions, amount of their wins and winning countries"""
-    wimbledon_data = read_wimbledon_data()
-    champion_to_wins = get_champions(wimbledon_data)
-    champion_country = get_champion_countries(wimbledon_data)
-    print("Wimbledon Champions:")
+    champion_country, champion_to_wins = display_wimbledon_data()
     for champion in champion_to_wins:
         print(f"{champion} {champion_to_wins[champion]}")
     print("These 12 countries have won Wimbledon:")
     print(", ".join(sorted(champion_country)))
+
+
+def display_wimbledon_data():
+    wimbledon_data = read_wimbledon_data()
+    champion_to_wins = get_champions(wimbledon_data)
+    champion_country = get_champion_countries(wimbledon_data)
+    print("Wimbledon Champions:")
+    return champion_country, champion_to_wins
+
 
 def read_wimbledon_data():
     """Read and extract the data from wimbledon.csv"""
