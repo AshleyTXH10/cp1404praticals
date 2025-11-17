@@ -5,7 +5,7 @@ class SilverServiceTaxi(Taxi):
 
     def __init__(self, fanciness: float, **kwargs):
         """Initialise a Silver Service Taxi instance, based on parent class Taxi."""
-        super().__init__(self, **kwargs)
+        super().__init__(**kwargs)
         self.price_per_km = Taxi.price_per_km * fanciness
 
     def __str__(self):
