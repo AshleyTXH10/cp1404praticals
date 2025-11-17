@@ -1,5 +1,5 @@
 from silver_service_taxi import SilverServiceTaxi
-EXPECTED_FARE = 48.78
+EXPECTED_FARE = 48.80
 
 def main():
     """Run tests for the SilverServiceTaxi class"""
