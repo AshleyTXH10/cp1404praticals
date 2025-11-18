@@ -13,10 +13,30 @@ def main():
     option = get_option()
     while option != "q":
        if option == "d":
+           if current_taxi is None:
+               print("You need to choose a taxi before you can drive")
+               option = get_option()
+           else:
+               # Get valid distance
+               distance = int(input("Drive how far? "))
+               current_taxi.drive(distance)
+               print(f"Your {current_taxi.name} trip cost you {current_taxi.get_fare()}")
+               bill += current_taxi.get_fare()
 
        if option == "c":
+           print("Available taxis:")
+           print_taxis(taxis)
+           taxi_choice = int(input(">>> "))
+           if 0 <= taxi_choice <= len(taxis):
+               current_taxi = taxis[taxi_choice]
+           else:
+               print("Invalid taxi choice")
+           option = get_option()
 
-       print(f"Bill to date: ${bill}")
+        print(f"Bill to date: ${bill}")
+    print(f"Total trip cost: ${bill}")
+    print("Taxis are now:")
+    print_taxis()
 
 def get_option():
     print(MENU)
@@ -26,5 +46,11 @@ def get_option():
         print(MENU)
         option = input(">>> ").lower()
     return option
+
+def get_valid_distance(distance):
+
+def print_taxis(taxis):
+    for i, taxi in taxis:
+        print(f"{i} - {taxi}")
 
 main()
