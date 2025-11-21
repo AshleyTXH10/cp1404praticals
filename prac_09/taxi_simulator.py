@@ -20,8 +20,9 @@ def main():
                current_taxi.start_fare()
                distance = get_valid_distance()
                current_taxi.drive(distance)
-               print(f"Your {current_taxi.name} trip cost you ${current_taxi.get_fare()}")
-               bill += current_taxi.get_fare()
+               trip_cost = current_taxi.get_fare()
+               print(f"Your {current_taxi.name} trip cost you ${trip_cost}")
+               bill += trip_cost
 
        if option == "c":
            print("Available taxis:")
