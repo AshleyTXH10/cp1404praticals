@@ -1,6 +1,7 @@
 from taxi import Taxi
 
 class SilverServiceTaxi(Taxi):
+    """Specialised version of Taxi that includes an additional flagfall costs."""
     flagfall = 4.50
 
     def __init__(self, fanciness: float, **kwargs):
