@@ -24,6 +24,14 @@ def is_long_word(word, length=5):
     """
     return len(word) >= length
 
+def get_sentence(phrase):
+    words = phrase.strip().split(" ")
+    words[0] = words[0].title()
+    sentence = " ".join(words)
+    if not sentence.endswith("."):
+        sentence += "."
+    return sentence
+
 
 def run_tests():
     """Run the tests on the functions."""
@@ -49,6 +57,11 @@ def run_tests():
     assert car.fuel == 10, "Car's fuel should be 10"
     car2 = Car()
     assert car2.fuel == 0, "Car's default fuel should be 0"
+
+    # Test for get_sentence() function
+    assert get_sentence("hello") == "Hello.", "Expected to get Hello"
+    assert get_sentence("It is an ex parrot.") == "It is an ex parrot.", "Expected to get 'It is an ex parrot.'"
+    assert get_sentence("HELLO WORLD!") == "Hello WORLD!.", "Expected to get Hello world!."
 
 
 run_tests()
