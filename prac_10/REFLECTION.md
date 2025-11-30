@@ -65,9 +65,11 @@ which I think is helpful for them.
 ## Practicals
 
 ### Regarding the **practical tasks** overall, what would you change if you were in charge of the subject?
-
-...
+If I was in charge I would try to make the questions and guides more clear and understandable, there were times while doing praticals when I would get stuck on guides
+or questions because I didn't understand it or there were certain things I couldn't get to work on my setup.
 
 ### What did you do really well for practicals in this subject?
-
-...
+What I think I did really well for the praticals is starting early. I really enjoy coding and these praticals are more like fun puzzles to me rather then homework. When
+I understand the questions and concepts I could finish the whole pratical in a sitting, but sometimes I feel some concepts were a bit difficult for me and when I got frustrated
+I tend to keep working on it and get myself even more frustrated rather than just taking a break or moving on. But as I progressed further in the semester to combat this I take 
+frequent 5 minutes breaks after every exercise or when I feel myself getting more frustrated.
